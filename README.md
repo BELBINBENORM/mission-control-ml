@@ -31,7 +31,7 @@ pip install -e .
 Run this command in a code cell to install the library directly from GitHub:
 
 ```python
-!pip install -q git https://github.com/BELBINBENORM/mission-control-ml.git
+!pip install -q git+https://github.com/BELBINBENORM/mission-control-ml.git
 ```
 ---
 
