@@ -1,0 +1,21 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Mission Control temporary files
+monitor_engine.py
+monitor_engine.log
+dashboard.txt
+log_*.txt
+*.py.log
+
+# Virtual environments
+venv/
+env/
+.env
+
+# Build and Distribution files
+build/
+dist/
+*.egg-info/
