@@ -17,6 +17,26 @@ Mission Control is a lightweight framework designed for Machine Learning Enginee
 * **🛑 Auto-Closing UI:** The external monitor window closes automatically when the engine is stopped from Python.
 
 ---
+## 🛠️ Example Worker Script
+Create a file named `data_processor.py` to see the engine in action:
+
+```python
+%%writefile data_processor.py
+import time
+import os
+
+print(f"⚙️ Processor Started on PID: {os.getpid()}")
+
+for chunk in range(1, 15):
+    with open("log_data_processor.txt", "a") as f:
+        f.write(f"[{time.strftime('%H:%M:%S')}] Chunk {chunk}: Cleaned 500 rows. Memory Usage: Low.\n")
+    
+    # Simulate work
+    time.sleep(5)
+
+print("🏁 Data Processing Finished.")
+```
+---
 
 ## 🚀 Quick Start
 
@@ -77,6 +97,16 @@ PID: 1026    | Process: ⚙️ data_processor.py
 * `mission_control.py`: The core module containing the `MissionControl` engine.
 * `setup.py`: Package configuration for easy installation.
 * `.gitignore`: Prevents temporary log files and caches from cluttering your repo.
+---
+## 💡 Why use Mission Control?
+
+The primary advantage of this framework is the ability to handle **independent execution loops** within high-performance environments:
+
+* **TPU & Multi-Core Utilization:** Unlike standard notebook execution, this allows you to utilize every available CPU core by spawning truly separate processes.
+* **Isolated Tuning:** You can run multiple tuning experiments (like Optuna trials) simultaneously. If one process fails or hits an OOM (Out of Memory) error, the rest of your environment remains stable.
+* **Hot-Swapping Code:** You can edit your `.py` worker scripts individually and restart them using `mc.start_task()` without disturbing or stopping other running tasks or your main notebook variables.
+* **Environment Independence:** Perfectly suited for environments like Google Colab TPU or Kaggle where maintaining a clean, responsive UI during heavy computation is difficult.
+
 ---
 
 ## 📬 Contact & Support
